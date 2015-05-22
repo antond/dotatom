@@ -1,0 +1,127 @@
+2014-10-28 - 0.4.4 (6bb590d)
+6bb590d (HEAD, origin/master, master) tests: trying to make them pass more consistently
+02dfeba add build status to readme.
+5227437 add .travis.yml
+4e8a136 (tag: v0.4.3) 0.4.3
+
+
+2014-10-27 - 0.4.3 (76d9e2f)
+76d9e2f (HEAD, master) fix: graceully handle pause in unknown/unparsed script
+7decd59 test: add tests for connecting to external debugger
+d3a6281 fix: properly close connections on destroy()
+f6d4fe6 test: add test for multi-file debugging.  (failing because of port reuse)
+ada82d6 remove dead code
+11560fc test: add initial DebuggerView spec
+2bce69d (yet another) major refactor
+9ff1751 (tag: v0.4.2, origin/master) 0.4.2
+
+
+2014-10-12 - 0.4.2 (a3cd145)
+a3cd145 (HEAD, master) Fix some stupid edge case bugs.
+b85fb9d (tag: v0.4.1, origin/master) 0.4.1
+
+
+2014-10-04 - 0.4.1 (878b848)
+878b848 (HEAD, master) Update readme and screenshot.
+c794b9c clean: Suppress debug logging.
+8bd9a74 tweak: Auto-open top scope in variables view.
+9c9bb9f feat: Syntax highlight variable watches.
+d9e6dda bugfix: scroll to new position when execution pauses.
+680e3f9 bugfix: weirdness when paused within unavailable script.
+f7925ae bugfix: toggling closed debug session panel weirdness
+9c8bc0d (tag: v0.4.0, origin/master) 0.4.0
+
+
+2014-10-02 - 0.4.0 (9f45748)
+9f45748 (HEAD, master) Open new scripts in correct pane.
+ca2c7dd Explore variable properties recursively.
+7b66c4a New feature: navigate the call stack.
+467841d Update styles to suit panel-based view.
+986056d Refactor to use Panes, and heavy cleaning.
+5368355 (tag: v0.3.0, origin/master) 0.3.0
+
+
+2014-10-01 - 0.3.0 (519e964)
+519e964 (HEAD, origin/dev, master, dev) fix readme and changelog
+698ba4a (tag: v0.2.3) 0.2.3
+c8941d0 Add variables view.
+4985fa9 Pull remote object values down.
+5e8671b Merge branch 'master' into dev
+9b7db2e Add first 9 tests.
+ee5a956 Clean up debug logging
+9c95584 Fix promise return value
+28d8824 DebuggerModel: allow empty constructor.
+af38c60 model: return promise from connect()
+
+
+2014-09-30 - 0.2.2 (7a46601)
+7a46601 (HEAD, master) Add first 9 tests.
+fe0f551 Clean up debug logging
+bd0bdb0 Fix up promises and some clutter in the api.
+1e5da47 (tag: v0.2.1, origin/master) 0.2.1
+
+
+2014-09-30 - 0.2.1 (cbee8c6)
+cbee8c6 (HEAD, master) Open remotely debugged scripts and fix regression in local debugging.
+1cd924a Avoid serializing/deserializing RemoteTextBuffer
+1b2a4f0 Open remote scripts when debugging a Chrome instance.
+afa5092 (tag: v0.2.0, origin/master) 0.2.0
+
+
+2014-09-29 - 0.2.0 (a226426)
+a226426 (HEAD, tag: v0.1.11, master) 0.1.11
+
+
+2014-09-29 - 0.1.11 (f05b383)
+f05b383 (HEAD, master, debugger-api-refactor) Major refactor: make this module function as a DevTools frontend.
+c09e462 Show 'paused at [line number] of [file]' message
+3e293b3 Release childprocess at the end of the debug session.
+b1db94a Improve impact of package on Atom load time.
+5cacf96 (tag: v0.1.10, origin/master) 0.1.10
+
+
+2014-09-27 - 0.1.10 (c9b31ee)
+c9b31ee (HEAD, master) LAST RENAME: update commands and style prefixes to 'debugger'
+6502714 (tag: v0.1.9, origin/master) Prepare 0.1.9 release
+fa8ddf6 Renaming node-debug to debugger
+b490c4c (tag: v0.1.8) 0.1.8
+
+
+2014-09-27 - 0.1.8 (db26c86)
+db26c86 (HEAD, master) Add debugging statements and updated README
+7f52691 Make `Node Debug: Connect` task work from anywhere
+f4a3a53 (tag: v0.1.7, origin/master) 0.1.7
+
+
+2014-09-27 - 0.1.7 (850f79b)
+850f79b (HEAD, master) bugfix: subsequent debug sessions not working
+f159926 (tag: v0.1.6, origin/master) Prepare 0.1.6 release
+80aab92 Renaming atom-node-debug to node-debug
+44d1960 (tag: v0.1.5) Prepare 0.1.5 release
+829f085 fix package.json
+1c40013 (tag: v0.1.4) 0.1.4
+
+
+2014-09-27 - 0.1.4 (5910c61)
+5910c61 (HEAD, master) WARNING - rename atom-node-debug to node-debug
+9f5d04d (origin/master) 0.1.3
+
+
+2014-09-27 - 0.1.3 (81cce23)
+81cce23 (HEAD, master) Allow setting breakpoints when not debugging.
+5cd8758 persist breakpoints across debug sessions
+188e2d8 fix removeBreakpoint(), follow step into different files
+27163f8 refactor decoration/component classes,tweak styles
+be6b3ee remove logging statment
+84f2ad7 add keywords to package.json
+e4c8635 (tag: v0.1.2, origin/master) Prepare 0.1.2 release
+2595de6 Update README.md
+db85e74 (tag: v0.1.1) Prepare 0.1.1 release
+774dfa6 add screenshot and fix links
+1e0670e (tag: v0.1.0) Prepare 0.1.0 release
+2573160 tweak readme and package.json
+f12cb7d breakpoints
+293e015 console output
+1074644 refactor marker management, call stack highlighting
+0c5945f basic control panel
+80c8e63 Initial commit

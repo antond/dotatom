@@ -1,0 +1,2050 @@
+{
+  "name": "debugger",
+  "main": "./lib/atom-node-debug",
+  "version": "0.4.5",
+  "description": "Debug javascript code from right within the editor: set breakpoints, step through code, inspect variable/expression values, etc.",
+  "keywords": [
+    "node",
+    "nodejs",
+    "debug",
+    "debugger",
+    "inspector",
+    "web inspector",
+    "node-inspector"
+  ],
+  "activationEvents": [
+    "debugger:connect",
+    "debugger:toggle-debug-session"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandthakker/atom-node-debug"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.129.0"
+  },
+  "dependencies": {
+    "debug": "^2.0.0",
+    "mustache": "^0.8.2",
+    "node-inspector": "^0.7.4",
+    "q": "^1.0.1",
+    "request": "^2.44.0",
+    "text-buffer": "^3.2.7",
+    "underscore-plus": "^1.5.1",
+    "ws": "^0.4.32"
+  },
+  "devDependencies": {},
+  "readme": "# Atom debugger package\n\nDebug javascript code from right within the editor: set breakpoints, step through code,\ninspect variables values.\n\nWe all love (and couldn't live without) the Chrome inspector, but sometimes you just don't want\nto open up your whole source tree in another browser.\n\n![](https://raw.githubusercontent.com/anandthakker/atom-node-debug/master/screenshot.gif)\n\n# Features\n- Step through (over, into, out) node code.\n- Navigate the call stack.\n- Inspect variable values.\n- Rudimentary console output.\n- Run debugger on current file, or attach to an existing `node --debug` session.\n- Attach to a `Chrome --remote-debugging-port` session to debug javascript running\n  in the browser.\n\n# Roadmap\n\n- [x] Ability to attach to Chrome debugger in addition to Node one.\n  - [ ] Follow-up: intelligently open *local* source files from current project, even\n        when they're being served via http.\n- [x] Open up a new tab when execution leaves current source.\n- [x] Persist breakpoints across debugger sessions.\n- [ ] Breakpoint list\n- [x] Variables\n- [ ] Structured console messages\n- [x] TESTS! (Although the underlying API has tests, the ui wiring doesn't.)\n- [x] Jump up and down the stack\n- [ ] Eval\n- [ ] Save and continue\n- [ ] Source maps (a.k.a. coffeescript support)\n\n# Theme/Style\n\nTake a look at [the stylesheet](/stylesheets/atom-node-debug.less).\n\nHaven't yet tested this on anything but the basic\ntheme, but heads up: it uses `darken()` to modify\ntheme background color variables for use as breakpoint\nand current line markers.  That means the default styles\nprobably work fine for dark themes, and less well for\nlight ones.\n\n# Advanced Usage\n\n## Arbitrary Node Inspectors\n\n```bash\n$ node-inspector\nNode Inspector v0.7.4\nVisit http://127.0.0.1:8080/debug?port=5858 to start debugging.\n```\n\nYou want the *front end* port--8080 in the example above.\n\n\n## Chrome\n**IN ALPHA**\n\n```bash\n$ Google\\\\ Chrome\\\\ Canary --remote-debugging-port=9222\n$ curl http://localhost:9222/json\n```\n```json\n[ {\n   \"description\": \"\",\n   \"devtoolsFrontendUrl\": \"/devtools/devtools.html?ws=localhost:9222/devtools/\n   page/4649D7AA-4AAC-4B2E-A86A-A3789FB3EC61\",\n   \"faviconUrl\": \"https://www.google.com/favicon.ico\",\n   \"id\": \"4649D7AA-4AAC-4B2E-A86A-A3789FB3EC61\",\n   \"title\": \"My Web Page!\",\n   \"type\": \"page\",\n   \"url\": \"http://mywebpage.com\",\n   \"webSocketDebuggerUrl\":\"ws://localhost:9222/devtools/page/4649D7AA-4AAC-4B2E-A86A-A3789FB3EC61\"\n}, ... ]\n```\n\nCoppy the `webSocketDebuggerUrl` starting with `ws://...`.\n\nThen use cmd-shift-P 'Debugger:Connect' (ctrl-opt-cmd-I by default) and paste in\nthe web socket url you just copied.\n\nOnce the debugger connects, it'll grab source files from Chrome and open them in\nthe editor.  Set breakpoints and reload the page to debug!\n\n\n# Contributing\n\nIssues and PR's welcome.\n\n# Thanks\n\n- [node-inspector][1]\n- [chromium][2]\n\n# License\n\n[MIT][3]\n\n\n[1]:https://github.com/node-inspector/node-inspector\n[2]:http://chromium.org\n[3]:https://github.com/anandthakker/atom-node-debug/blob/master/LICENSE.md\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/anandthakker/atom-node-debug/issues"
+  },
+  "homepage": "https://github.com/anandthakker/atom-node-debug",
+  "_id": "debugger@0.4.5",
+  "_shasum": "fa19d155fb449aacb26b4e3730d29cfb4620abac",
+  "_resolved": "file:../d-115027-11095-4l6zlh/package.tgz",
+  "_from": "../d-115027-11095-4l6zlh/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "debug",
+        "version": "2.1.1",
+        "path": "node_modules/debug/node.js"
+      },
+      {
+        "name": "ms",
+        "version": "0.6.2",
+        "path": "node_modules/debug/node_modules/ms/index.js"
+      },
+      {
+        "name": "mustache",
+        "version": "0.8.2",
+        "path": "node_modules/mustache/mustache.js"
+      },
+      {
+        "name": "node-inspector",
+        "version": "0.7.4",
+        "path": "node_modules/node-inspector/index.js"
+      },
+      {
+        "name": "async",
+        "version": "0.8.0",
+        "path": "node_modules/node-inspector/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "debug",
+        "version": "0.8.1",
+        "path": "node_modules/node-inspector/node_modules/debug/lib/debug.js"
+      },
+      {
+        "name": "express",
+        "version": "4.0.0",
+        "path": "node_modules/node-inspector/node_modules/express/index.js"
+      },
+      {
+        "name": "accepts",
+        "version": "1.0.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/accepts/index.js"
+      },
+      {
+        "name": "mime",
+        "version": "1.2.11",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/mime/mime.js"
+      },
+      {
+        "name": "negotiator",
+        "version": "0.3.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/negotiator.js"
+      },
+      {
+        "name": "buffer-crc32",
+        "version": "0.2.1",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/buffer-crc32/index.js"
+      },
+      {
+        "name": "cookie",
+        "version": "0.1.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/cookie/index.js"
+      },
+      {
+        "name": "cookie-signature",
+        "version": "1.0.3",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/cookie-signature/index.js"
+      },
+      {
+        "name": "escape-html",
+        "version": "1.0.1",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/escape-html/index.js"
+      },
+      {
+        "name": "fresh",
+        "version": "0.2.2",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/fresh/index.js"
+      },
+      {
+        "name": "merge-descriptors",
+        "version": "0.0.2",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/merge-descriptors/index.js"
+      },
+      {
+        "name": "methods",
+        "version": "0.1.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/methods/index.js"
+      },
+      {
+        "name": "parseurl",
+        "version": "1.0.1",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/parseurl/index.js"
+      },
+      {
+        "name": "path-to-regexp",
+        "version": "0.1.2",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/path-to-regexp/index.js"
+      },
+      {
+        "name": "qs",
+        "version": "0.6.6",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/qs/index.js"
+      },
+      {
+        "name": "range-parser",
+        "version": "1.0.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/range-parser/index.js"
+      },
+      {
+        "name": "send",
+        "version": "0.2.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/send/index.js"
+      },
+      {
+        "name": "mime",
+        "version": "1.2.11",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/send/node_modules/mime/mime.js"
+      },
+      {
+        "name": "serve-static",
+        "version": "1.0.1",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/serve-static/index.js"
+      },
+      {
+        "name": "send",
+        "version": "0.1.4",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/index.js"
+      },
+      {
+        "name": "fresh",
+        "version": "0.2.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/fresh/index.js"
+      },
+      {
+        "name": "mime",
+        "version": "1.2.11",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/mime/mime.js"
+      },
+      {
+        "name": "range-parser",
+        "version": "0.0.4",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/range-parser/index.js"
+      },
+      {
+        "name": "type-is",
+        "version": "1.0.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/type-is/index.js"
+      },
+      {
+        "name": "mime",
+        "version": "1.2.11",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/type-is/node_modules/mime/mime.js"
+      },
+      {
+        "name": "utils-merge",
+        "version": "1.0.0",
+        "path": "node_modules/node-inspector/node_modules/express/node_modules/utils-merge/index.js"
+      },
+      {
+        "name": "glob",
+        "version": "3.2.11",
+        "path": "node_modules/node-inspector/node_modules/glob/glob.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/node-inspector/node_modules/glob/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "0.3.0",
+        "path": "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/minimatch.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "2.5.0",
+        "path": "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js"
+      },
+      {
+        "name": "sigmund",
+        "version": "1.0.0",
+        "path": "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js"
+      },
+      {
+        "name": "opener",
+        "version": "1.3.0",
+        "path": "node_modules/node-inspector/node_modules/opener/opener.js"
+      },
+      {
+        "name": "rc",
+        "version": "0.3.5",
+        "path": "node_modules/node-inspector/node_modules/rc/index.js"
+      },
+      {
+        "name": "deep-extend",
+        "version": "0.2.11",
+        "path": "node_modules/node-inspector/node_modules/rc/node_modules/deep-extend/index.js"
+      },
+      {
+        "name": "ini",
+        "version": "1.1.0",
+        "path": "node_modules/node-inspector/node_modules/rc/node_modules/ini/ini.js"
+      },
+      {
+        "name": "minimist",
+        "version": "0.0.10",
+        "path": "node_modules/node-inspector/node_modules/rc/node_modules/minimist/index.js"
+      },
+      {
+        "name": "strong-data-uri",
+        "version": "0.1.1",
+        "path": "node_modules/node-inspector/node_modules/strong-data-uri/index.js"
+      },
+      {
+        "name": "truncate",
+        "version": "1.0.4",
+        "path": "node_modules/node-inspector/node_modules/strong-data-uri/node_modules/truncate/truncate.js"
+      },
+      {
+        "name": "which",
+        "version": "1.0.8",
+        "path": "node_modules/node-inspector/node_modules/which/which.js"
+      },
+      {
+        "name": "yargs",
+        "version": "1.2.6",
+        "path": "node_modules/node-inspector/node_modules/yargs/index.js"
+      },
+      {
+        "name": "minimist",
+        "version": "0.1.0",
+        "path": "node_modules/node-inspector/node_modules/yargs/node_modules/minimist/index.js"
+      },
+      {
+        "name": "q",
+        "version": "1.1.2",
+        "path": "node_modules/q/q.js"
+      },
+      {
+        "name": "request",
+        "version": "2.51.0",
+        "path": "node_modules/request/index.js"
+      },
+      {
+        "name": "aws-sign2",
+        "version": "0.5.0",
+        "path": "node_modules/request/node_modules/aws-sign2/index.js"
+      },
+      {
+        "name": "bl",
+        "version": "0.9.4",
+        "path": "node_modules/request/node_modules/bl/bl.js"
+      },
+      {
+        "name": "readable-stream",
+        "version": "1.0.33",
+        "path": "node_modules/request/node_modules/bl/node_modules/readable-stream/readable.js"
+      },
+      {
+        "name": "core-util-is",
+        "version": "1.0.1",
+        "path": "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is/lib/util.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/inherits/inherits.js"
+      },
+      {
+        "name": "isarray",
+        "version": "0.0.1",
+        "path": "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/isarray/index.js"
+      },
+      {
+        "name": "string_decoder",
+        "version": "0.10.31",
+        "path": "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/string_decoder/index.js"
+      },
+      {
+        "name": "caseless",
+        "version": "0.8.0",
+        "path": "node_modules/request/node_modules/caseless/index.js"
+      },
+      {
+        "name": "combined-stream",
+        "version": "0.0.7",
+        "path": "node_modules/request/node_modules/combined-stream/lib/combined_stream.js"
+      },
+      {
+        "name": "delayed-stream",
+        "version": "0.0.5",
+        "path": "node_modules/request/node_modules/combined-stream/node_modules/delayed-stream/lib/delayed_stream.js"
+      },
+      {
+        "name": "forever-agent",
+        "version": "0.5.2",
+        "path": "node_modules/request/node_modules/forever-agent/index.js"
+      },
+      {
+        "name": "form-data",
+        "version": "0.2.0",
+        "path": "node_modules/request/node_modules/form-data/lib/form_data.js"
+      },
+      {
+        "name": "async",
+        "version": "0.9.0",
+        "path": "node_modules/request/node_modules/form-data/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mime-types",
+        "version": "2.0.7",
+        "path": "node_modules/request/node_modules/form-data/node_modules/mime-types/index.js"
+      },
+      {
+        "name": "mime-db",
+        "version": "1.5.0",
+        "path": "node_modules/request/node_modules/form-data/node_modules/mime-types/node_modules/mime-db/index.js"
+      },
+      {
+        "name": "hawk",
+        "version": "1.1.1",
+        "path": "node_modules/request/node_modules/hawk/index.js"
+      },
+      {
+        "name": "boom",
+        "version": "0.4.2",
+        "path": "node_modules/request/node_modules/hawk/node_modules/boom/index.js"
+      },
+      {
+        "name": "cryptiles",
+        "version": "0.2.2",
+        "path": "node_modules/request/node_modules/hawk/node_modules/cryptiles/index.js"
+      },
+      {
+        "name": "hoek",
+        "version": "0.9.1",
+        "path": "node_modules/request/node_modules/hawk/node_modules/hoek/index.js"
+      },
+      {
+        "name": "sntp",
+        "version": "0.2.4",
+        "path": "node_modules/request/node_modules/hawk/node_modules/sntp/index.js"
+      },
+      {
+        "name": "http-signature",
+        "version": "0.10.1",
+        "path": "node_modules/request/node_modules/http-signature/lib/index.js"
+      },
+      {
+        "name": "asn1",
+        "version": "0.1.11",
+        "path": "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/index.js"
+      },
+      {
+        "name": "assert-plus",
+        "version": "0.1.5",
+        "path": "node_modules/request/node_modules/http-signature/node_modules/assert-plus/assert.js"
+      },
+      {
+        "name": "ctype",
+        "version": "0.5.3",
+        "path": "node_modules/request/node_modules/http-signature/node_modules/ctype/ctype.js"
+      },
+      {
+        "name": "json-stringify-safe",
+        "version": "5.0.0",
+        "path": "node_modules/request/node_modules/json-stringify-safe/stringify.js"
+      },
+      {
+        "name": "mime-types",
+        "version": "1.0.2",
+        "path": "node_modules/request/node_modules/mime-types/lib/index.js"
+      },
+      {
+        "name": "node-uuid",
+        "version": "1.4.2",
+        "path": "node_modules/request/node_modules/node-uuid/uuid.js"
+      },
+      {
+        "name": "oauth-sign",
+        "version": "0.5.0",
+        "path": "node_modules/request/node_modules/oauth-sign/index.js"
+      },
+      {
+        "name": "qs",
+        "version": "2.3.3",
+        "path": "node_modules/request/node_modules/qs/index.js"
+      },
+      {
+        "name": "stringstream",
+        "version": "0.0.4",
+        "path": "node_modules/request/node_modules/stringstream/stringstream.js"
+      },
+      {
+        "name": "tough-cookie",
+        "version": "0.12.1",
+        "path": "node_modules/request/node_modules/tough-cookie/lib/cookie.js"
+      },
+      {
+        "name": "punycode",
+        "version": "1.3.2",
+        "path": "node_modules/request/node_modules/tough-cookie/node_modules/punycode/punycode.js"
+      },
+      {
+        "name": "tunnel-agent",
+        "version": "0.4.0",
+        "path": "node_modules/request/node_modules/tunnel-agent/index.js"
+      },
+      {
+        "name": "text-buffer",
+        "version": "3.10.1",
+        "path": "node_modules/text-buffer/lib/text-buffer.js"
+      },
+      {
+        "name": "atom-diff",
+        "version": "2.0.0",
+        "path": "node_modules/text-buffer/node_modules/atom-diff/diff.js"
+      },
+      {
+        "name": "delegato",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/delegato/lib/delegator.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/delegato/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "emissary",
+        "version": "1.3.1",
+        "path": "node_modules/text-buffer/node_modules/emissary/lib/emissary.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/text-buffer/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/emissary/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "property-accessors",
+        "version": "1.1.0",
+        "path": "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "event-kit",
+        "version": "0.8.2",
+        "path": "node_modules/text-buffer/node_modules/event-kit/lib/event-kit.js"
+      },
+      {
+        "name": "fs-plus",
+        "version": "2.4.0",
+        "path": "node_modules/text-buffer/node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/text-buffer/node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/text-buffer/node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/text-buffer/node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "grim",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/grim/lib/grim.js"
+      },
+      {
+        "name": "coffeestack",
+        "version": "0.7.0",
+        "path": "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/index.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.7.1",
+        "path": "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/coffee-script.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "source-map",
+        "version": "0.1.43",
+        "path": "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map.js"
+      },
+      {
+        "name": "amdefine",
+        "version": "0.1.0",
+        "path": "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js"
+      },
+      {
+        "name": "interval-skip-list",
+        "version": "2.0.0",
+        "path": "node_modules/text-buffer/node_modules/interval-skip-list/lib/interval-skip-list.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.5.2",
+        "path": "node_modules/text-buffer/node_modules/interval-skip-list/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "pathwatcher",
+        "version": "2.6.1",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/lib/main.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "event-kit",
+        "version": "1.0.1",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib/event-kit.js"
+      },
+      {
+        "name": "iconv-lite",
+        "version": "0.4.6",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/lib/index.js"
+      },
+      {
+        "name": "nan",
+        "version": "1.2.0",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/node_modules/nan/include_dirs.js"
+      },
+      {
+        "name": "runas",
+        "version": "1.1.0",
+        "path": "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/lib/runas.js"
+      },
+      {
+        "name": "q",
+        "version": "1.0.1",
+        "path": "node_modules/text-buffer/node_modules/q/q.js"
+      },
+      {
+        "name": "serializable",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/serializable/lib/serializable.js"
+      },
+      {
+        "name": "get-parameter-names",
+        "version": "0.1.2",
+        "path": "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/index.js"
+      },
+      {
+        "name": "testla",
+        "version": "0.1.1",
+        "path": "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/lib/index.js"
+      },
+      {
+        "name": "dependency-injector",
+        "version": "0.0.5",
+        "path": "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/dependency-injector/index.js"
+      },
+      {
+        "name": "fantasy-promises",
+        "version": "0.1.0",
+        "path": "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/fantasy-promises/index.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/text-buffer/node_modules/serializable/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "span-skip-list",
+        "version": "0.1.1",
+        "path": "node_modules/text-buffer/node_modules/span-skip-list/lib/span-skip-list.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.5.2",
+        "path": "node_modules/text-buffer/node_modules/span-skip-list/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "ws",
+        "version": "0.4.32",
+        "path": "node_modules/ws/index.js"
+      },
+      {
+        "name": "commander",
+        "version": "2.1.0",
+        "path": "node_modules/ws/node_modules/commander/index.js"
+      },
+      {
+        "name": "nan",
+        "version": "1.0.0",
+        "path": "node_modules/ws/node_modules/nan/include_dirs.js"
+      },
+      {
+        "name": "options",
+        "version": "0.0.6",
+        "path": "node_modules/ws/node_modules/options/lib/options.js"
+      },
+      {
+        "name": "tinycolor",
+        "version": "0.0.1",
+        "path": "node_modules/ws/node_modules/tinycolor/tinycolor.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        "lib/api/backend.js",
+        "lib/api/register-backend-commands.js",
+        "node_modules/debug/browser.js",
+        "node_modules/debug/debug.js",
+        "node_modules/debug/node.js",
+        "node_modules/debug/node_modules/ms/index.js",
+        "node_modules/mustache/mustache.js",
+        "node_modules/node-inspector/bin/inspector.js",
+        "node_modules/node-inspector/bin/node-debug.js",
+        "node_modules/node-inspector/bin/run-repl.js",
+        "node_modules/node-inspector/front-end/AdvancedSearchController.js",
+        "node_modules/node-inspector/front-end/ApplicationCacheItemsView.js",
+        "node_modules/node-inspector/front-end/ApplicationCacheModel.js",
+        "node_modules/node-inspector/front-end/AuditCategories.js",
+        "node_modules/node-inspector/front-end/AuditController.js",
+        "node_modules/node-inspector/front-end/AuditFormatters.js",
+        "node_modules/node-inspector/front-end/AuditLauncherView.js",
+        "node_modules/node-inspector/front-end/AuditResultView.js",
+        "node_modules/node-inspector/front-end/AuditRules.js",
+        "node_modules/node-inspector/front-end/AuditsPanel.js",
+        "node_modules/node-inspector/front-end/BottomUpProfileDataGridTree.js",
+        "node_modules/node-inspector/front-end/BreakpointManager.js",
+        "node_modules/node-inspector/front-end/BreakpointsSidebarPane.js",
+        "node_modules/node-inspector/front-end/CPUProfileView.js",
+        "node_modules/node-inspector/front-end/CSSMetadata.js",
+        "node_modules/node-inspector/front-end/CSSNamedFlowCollectionsView.js",
+        "node_modules/node-inspector/front-end/CSSNamedFlowView.js",
+        "node_modules/node-inspector/front-end/CSSStyleModel.js",
+        "node_modules/node-inspector/front-end/CSSStyleSheetMapping.js",
+        "node_modules/node-inspector/front-end/CallStackSidebarPane.js",
+        "node_modules/node-inspector/front-end/CanvasProfileView.js",
+        "node_modules/node-inspector/front-end/CanvasReplayStateView.js",
+        "node_modules/node-inspector/front-end/Checkbox.js",
+        "node_modules/node-inspector/front-end/CodeMirrorTextEditor.js",
+        "node_modules/node-inspector/front-end/CodeMirrorUtils.js",
+        "node_modules/node-inspector/front-end/Color.js",
+        "node_modules/node-inspector/front-end/CompilerScriptMapping.js",
+        "node_modules/node-inspector/front-end/CompletionDictionary.js",
+        "node_modules/node-inspector/front-end/ConsoleMessage.js",
+        "node_modules/node-inspector/front-end/ConsoleModel.js",
+        "node_modules/node-inspector/front-end/ConsolePanel.js",
+        "node_modules/node-inspector/front-end/ConsoleView.js",
+        "node_modules/node-inspector/front-end/ContentProvider.js",
+        "node_modules/node-inspector/front-end/ContentProviderBasedProjectDelegate.js",
+        "node_modules/node-inspector/front-end/ContentProviders.js",
+        "node_modules/node-inspector/front-end/ContextMenu.js",
+        "node_modules/node-inspector/front-end/CookieItemsView.js",
+        "node_modules/node-inspector/front-end/CookieParser.js",
+        "node_modules/node-inspector/front-end/CookiesTable.js",
+        "node_modules/node-inspector/front-end/DOMAgent.js",
+        "node_modules/node-inspector/front-end/DOMBreakpointsSidebarPane.js",
+        "node_modules/node-inspector/front-end/DOMCountersGraph.js",
+        "node_modules/node-inspector/front-end/DOMExtension.js",
+        "node_modules/node-inspector/front-end/DOMPresentationUtils.js",
+        "node_modules/node-inspector/front-end/DOMStorage.js",
+        "node_modules/node-inspector/front-end/DOMStorageItemsView.js",
+        "node_modules/node-inspector/front-end/DOMSyntaxHighlighter.js",
+        "node_modules/node-inspector/front-end/DataGrid.js",
+        "node_modules/node-inspector/front-end/Database.js",
+        "node_modules/node-inspector/front-end/DatabaseQueryView.js",
+        "node_modules/node-inspector/front-end/DatabaseTableView.js",
+        "node_modules/node-inspector/front-end/DebuggerModel.js",
+        "node_modules/node-inspector/front-end/DebuggerScriptMapping.js",
+        "node_modules/node-inspector/front-end/DefaultScriptMapping.js",
+        "node_modules/node-inspector/front-end/DevToolsExtensionAPI.js",
+        "node_modules/node-inspector/front-end/Dialog.js",
+        "node_modules/node-inspector/front-end/DirectoryContentView.js",
+        "node_modules/node-inspector/front-end/DockController.js",
+        "node_modules/node-inspector/front-end/Drawer.js",
+        "node_modules/node-inspector/front-end/EditFileSystemDialog.js",
+        "node_modules/node-inspector/front-end/ElementsPanel.js",
+        "node_modules/node-inspector/front-end/ElementsPanelDescriptor.js",
+        "node_modules/node-inspector/front-end/ElementsTreeOutline.js",
+        "node_modules/node-inspector/front-end/EmptyView.js",
+        "node_modules/node-inspector/front-end/EventListenersSidebarPane.js",
+        "node_modules/node-inspector/front-end/ExtensionAPI.js",
+        "node_modules/node-inspector/front-end/ExtensionAuditCategory.js",
+        "node_modules/node-inspector/front-end/ExtensionPanel.js",
+        "node_modules/node-inspector/front-end/ExtensionRegistryStub.js",
+        "node_modules/node-inspector/front-end/ExtensionServer.js",
+        "node_modules/node-inspector/front-end/ExtensionView.js",
+        "node_modules/node-inspector/front-end/FileContentView.js",
+        "node_modules/node-inspector/front-end/FileManager.js",
+        "node_modules/node-inspector/front-end/FilePathScoreFunction.js",
+        "node_modules/node-inspector/front-end/FileSystemMapping.js",
+        "node_modules/node-inspector/front-end/FileSystemModel.js",
+        "node_modules/node-inspector/front-end/FileSystemProjectDelegate.js",
+        "node_modules/node-inspector/front-end/FileSystemView.js",
+        "node_modules/node-inspector/front-end/FileUtils.js",
+        "node_modules/node-inspector/front-end/FilteredItemSelectionDialog.js",
+        "node_modules/node-inspector/front-end/FlameChart.js",
+        "node_modules/node-inspector/front-end/FontView.js",
+        "node_modules/node-inspector/front-end/GoToLineDialog.js",
+        "node_modules/node-inspector/front-end/HAREntry.js",
+        "node_modules/node-inspector/front-end/HandlerRegistry.js",
+        "node_modules/node-inspector/front-end/HeapSnapshot.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotDataGrids.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotGridNodes.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotLoader.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotProxy.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotView.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotWorker.js",
+        "node_modules/node-inspector/front-end/HeapSnapshotWorkerDispatcher.js",
+        "node_modules/node-inspector/front-end/HelpScreen.js",
+        "node_modules/node-inspector/front-end/ImageView.js",
+        "node_modules/node-inspector/front-end/IndexedDBModel.js",
+        "node_modules/node-inspector/front-end/IndexedDBViews.js",
+        "node_modules/node-inspector/front-end/InspectElementModeController.js",
+        "node_modules/node-inspector/front-end/InspectorBackend.js",
+        "node_modules/node-inspector/front-end/InspectorBackendCommands.js",
+        "node_modules/node-inspector/front-end/InspectorFrontendAPI.js",
+        "node_modules/node-inspector/front-end/InspectorFrontendHostStub.js",
+        "node_modules/node-inspector/front-end/InspectorView.js",
+        "node_modules/node-inspector/front-end/IsolatedFileSystem.js",
+        "node_modules/node-inspector/front-end/IsolatedFileSystemManager.js",
+        "node_modules/node-inspector/front-end/JSHeapSnapshot.js",
+        "node_modules/node-inspector/front-end/JavaScriptFormatter.js",
+        "node_modules/node-inspector/front-end/JavaScriptSourceFrame.js",
+        "node_modules/node-inspector/front-end/KeyboardShortcut.js",
+        "node_modules/node-inspector/front-end/LayerDetailsView.js",
+        "node_modules/node-inspector/front-end/LayerTree.js",
+        "node_modules/node-inspector/front-end/LayerTreeModel.js",
+        "node_modules/node-inspector/front-end/Layers3DView.js",
+        "node_modules/node-inspector/front-end/LayersPanel.js",
+        "node_modules/node-inspector/front-end/LayersPanelDescriptor.js",
+        "node_modules/node-inspector/front-end/Linkifier.js",
+        "node_modules/node-inspector/front-end/LiveEditSupport.js",
+        "node_modules/node-inspector/front-end/MemoryStatistics.js",
+        "node_modules/node-inspector/front-end/MetricsSidebarPane.js",
+        "node_modules/node-inspector/front-end/NativeBreakpointsSidebarPane.js",
+        "node_modules/node-inspector/front-end/NavigatorOverlayController.js",
+        "node_modules/node-inspector/front-end/NavigatorView.js",
+        "node_modules/node-inspector/front-end/NetworkItemView.js",
+        "node_modules/node-inspector/front-end/NetworkLog.js",
+        "node_modules/node-inspector/front-end/NetworkManager.js",
+        "node_modules/node-inspector/front-end/NetworkPanel.js",
+        "node_modules/node-inspector/front-end/NetworkPanelDescriptor.js",
+        "node_modules/node-inspector/front-end/NetworkRequest.js",
+        "node_modules/node-inspector/front-end/NetworkUISourceCodeProvider.js",
+        "node_modules/node-inspector/front-end/Object.js",
+        "node_modules/node-inspector/front-end/ObjectPopoverHelper.js",
+        "node_modules/node-inspector/front-end/ObjectPropertiesSection.js",
+        "node_modules/node-inspector/front-end/OverridesSupport.js",
+        "node_modules/node-inspector/front-end/OverridesView.js",
+        "node_modules/node-inspector/front-end/OverviewGrid.js",
+        "node_modules/node-inspector/front-end/Panel.js",
+        "node_modules/node-inspector/front-end/ParsedURL.js",
+        "node_modules/node-inspector/front-end/Placard.js",
+        "node_modules/node-inspector/front-end/PlatformFontsSidebarPane.js",
+        "node_modules/node-inspector/front-end/Popover.js",
+        "node_modules/node-inspector/front-end/PresentationConsoleMessageHelper.js",
+        "node_modules/node-inspector/front-end/ProfileDataGridTree.js",
+        "node_modules/node-inspector/front-end/ProfileLauncherView.js",
+        "node_modules/node-inspector/front-end/ProfilesPanel.js",
+        "node_modules/node-inspector/front-end/ProfilesPanelDescriptor.js",
+        "node_modules/node-inspector/front-end/Progress.js",
+        "node_modules/node-inspector/front-end/ProgressIndicator.js",
+        "node_modules/node-inspector/front-end/PropertiesSection.js",
+        "node_modules/node-inspector/front-end/PropertiesSidebarPane.js",
+        "node_modules/node-inspector/front-end/RawSourceCode.js",
+        "node_modules/node-inspector/front-end/RemoteObject.js",
+        "node_modules/node-inspector/front-end/RequestCookiesView.js",
+        "node_modules/node-inspector/front-end/RequestHTMLView.js",
+        "node_modules/node-inspector/front-end/RequestHeadersView.js",
+        "node_modules/node-inspector/front-end/RequestJSONView.js",
+        "node_modules/node-inspector/front-end/RequestPreviewView.js",
+        "node_modules/node-inspector/front-end/RequestResponseView.js",
+        "node_modules/node-inspector/front-end/RequestTimingView.js",
+        "node_modules/node-inspector/front-end/RequestView.js",
+        "node_modules/node-inspector/front-end/Resource.js",
+        "node_modules/node-inspector/front-end/ResourceScriptMapping.js",
+        "node_modules/node-inspector/front-end/ResourceTreeModel.js",
+        "node_modules/node-inspector/front-end/ResourceType.js",
+        "node_modules/node-inspector/front-end/ResourceUtils.js",
+        "node_modules/node-inspector/front-end/ResourceView.js",
+        "node_modules/node-inspector/front-end/ResourceWebSocketFrameView.js",
+        "node_modules/node-inspector/front-end/ResourcesPanel.js",
+        "node_modules/node-inspector/front-end/RevisionHistoryView.js",
+        "node_modules/node-inspector/front-end/RuntimeModel.js",
+        "node_modules/node-inspector/front-end/SASSSourceMapping.js",
+        "node_modules/node-inspector/front-end/ScopeChainSidebarPane.js",
+        "node_modules/node-inspector/front-end/ScreencastView.js",
+        "node_modules/node-inspector/front-end/Script.js",
+        "node_modules/node-inspector/front-end/ScriptFormatter.js",
+        "node_modules/node-inspector/front-end/ScriptFormatterWorker.js",
+        "node_modules/node-inspector/front-end/ScriptSnippetModel.js",
+        "node_modules/node-inspector/front-end/ScriptsNavigator.js",
+        "node_modules/node-inspector/front-end/ScriptsPanel.js",
+        "node_modules/node-inspector/front-end/ScriptsPanelDescriptor.js",
+        "node_modules/node-inspector/front-end/ScriptsSearchScope.js",
+        "node_modules/node-inspector/front-end/SearchController.js",
+        "node_modules/node-inspector/front-end/Section.js",
+        "node_modules/node-inspector/front-end/Settings.js",
+        "node_modules/node-inspector/front-end/SettingsScreen.js",
+        "node_modules/node-inspector/front-end/ShortcutsScreen.js",
+        "node_modules/node-inspector/front-end/ShowMoreDataGridNode.js",
+        "node_modules/node-inspector/front-end/SidebarOverlay.js",
+        "node_modules/node-inspector/front-end/SidebarPane.js",
+        "node_modules/node-inspector/front-end/SidebarTreeElement.js",
+        "node_modules/node-inspector/front-end/SidebarView.js",
+        "node_modules/node-inspector/front-end/SimpleWorkspaceProvider.js",
+        "node_modules/node-inspector/front-end/SnippetStorage.js",
+        "node_modules/node-inspector/front-end/SoftContextMenu.js",
+        "node_modules/node-inspector/front-end/SourceFrame.js",
+        "node_modules/node-inspector/front-end/SourceMap.js",
+        "node_modules/node-inspector/front-end/SourceMapping.js",
+        "node_modules/node-inspector/front-end/Spectrum.js",
+        "node_modules/node-inspector/front-end/SplitView.js",
+        "node_modules/node-inspector/front-end/StatusBarButton.js",
+        "node_modules/node-inspector/front-end/StyleSheetOutlineDialog.js",
+        "node_modules/node-inspector/front-end/StylesSidebarPane.js",
+        "node_modules/node-inspector/front-end/StylesSourceMapping.js",
+        "node_modules/node-inspector/front-end/SuggestBox.js",
+        "node_modules/node-inspector/front-end/TabbedEditorContainer.js",
+        "node_modules/node-inspector/front-end/TabbedPane.js",
+        "node_modules/node-inspector/front-end/TestController.js",
+        "node_modules/node-inspector/front-end/Tests.js",
+        "node_modules/node-inspector/front-end/TextEditor.js",
+        "node_modules/node-inspector/front-end/TextPrompt.js",
+        "node_modules/node-inspector/front-end/TextRange.js",
+        "node_modules/node-inspector/front-end/TextUtils.js",
+        "node_modules/node-inspector/front-end/TimelineFrameController.js",
+        "node_modules/node-inspector/front-end/TimelineGrid.js",
+        "node_modules/node-inspector/front-end/TimelineManager.js",
+        "node_modules/node-inspector/front-end/TimelineModel.js",
+        "node_modules/node-inspector/front-end/TimelineOverviewPane.js",
+        "node_modules/node-inspector/front-end/TimelinePanel.js",
+        "node_modules/node-inspector/front-end/TimelinePanelDescriptor.js",
+        "node_modules/node-inspector/front-end/TimelinePresentationModel.js",
+        "node_modules/node-inspector/front-end/Toolbar.js",
+        "node_modules/node-inspector/front-end/TopDownProfileDataGridTree.js",
+        "node_modules/node-inspector/front-end/TracingAgent.js",
+        "node_modules/node-inspector/front-end/UISourceCode.js",
+        "node_modules/node-inspector/front-end/UISourceCodeFrame.js",
+        "node_modules/node-inspector/front-end/UIString.js",
+        "node_modules/node-inspector/front-end/UIUtils.js",
+        "node_modules/node-inspector/front-end/UglifyJS/parse-js.js",
+        "node_modules/node-inspector/front-end/UserMetrics.js",
+        "node_modules/node-inspector/front-end/View.js",
+        "node_modules/node-inspector/front-end/ViewportControl.js",
+        "node_modules/node-inspector/front-end/WatchExpressionsSidebarPane.js",
+        "node_modules/node-inspector/front-end/WorkerManager.js",
+        "node_modules/node-inspector/front-end/WorkersSidebarPane.js",
+        "node_modules/node-inspector/front-end/Workspace.js",
+        "node_modules/node-inspector/front-end/WorkspaceController.js",
+        "node_modules/node-inspector/front-end/buildSystemOnly.js",
+        "node_modules/node-inspector/front-end/cm/clike.js",
+        "node_modules/node-inspector/front-end/cm/closebrackets.js",
+        "node_modules/node-inspector/front-end/cm/codemirror.js",
+        "node_modules/node-inspector/front-end/cm/coffeescript.js",
+        "node_modules/node-inspector/front-end/cm/comment.js",
+        "node_modules/node-inspector/front-end/cm/css.js",
+        "node_modules/node-inspector/front-end/cm/headlesscodemirror.js",
+        "node_modules/node-inspector/front-end/cm/htmlembedded.js",
+        "node_modules/node-inspector/front-end/cm/htmlmixed.js",
+        "node_modules/node-inspector/front-end/cm/javascript.js",
+        "node_modules/node-inspector/front-end/cm/markselection.js",
+        "node_modules/node-inspector/front-end/cm/matchbrackets.js",
+        "node_modules/node-inspector/front-end/cm/overlay.js",
+        "node_modules/node-inspector/front-end/cm/php.js",
+        "node_modules/node-inspector/front-end/cm/python.js",
+        "node_modules/node-inspector/front-end/cm/shell.js",
+        "node_modules/node-inspector/front-end/cm/xml.js",
+        "node_modules/node-inspector/front-end/externs.js",
+        "node_modules/node-inspector/front-end/inspector.js",
+        "node_modules/node-inspector/front-end/jsdifflib.js",
+        "node_modules/node-inspector/front-end/treeoutline.js",
+        "node_modules/node-inspector/front-end/utilities.js",
+        "node_modules/node-inspector/front-end-node/Overrides.js",
+        "node_modules/node-inspector/index.js",
+        "node_modules/node-inspector/lib/BreakEventHandler.js",
+        "node_modules/node-inspector/lib/CallFramesProvider.js",
+        "node_modules/node-inspector/lib/DebuggerAgent.js",
+        "node_modules/node-inspector/lib/DebuggerClient.js",
+        "node_modules/node-inspector/lib/FrontendClient.js",
+        "node_modules/node-inspector/lib/FrontendCommandHandler.js",
+        "node_modules/node-inspector/lib/NetworkAgent.js",
+        "node_modules/node-inspector/lib/PageAgent.js",
+        "node_modules/node-inspector/lib/RuntimeAgent.js",
+        "node_modules/node-inspector/lib/ScriptFileStorage.js",
+        "node_modules/node-inspector/lib/ScriptManager.js",
+        "node_modules/node-inspector/lib/callback.js",
+        "node_modules/node-inspector/lib/config.js",
+        "node_modules/node-inspector/lib/convert.js",
+        "node_modules/node-inspector/lib/debug-server.js",
+        "node_modules/node-inspector/lib/debugger.js",
+        "node_modules/node-inspector/lib/session.js",
+        "node_modules/node-inspector/node_modules/async/lib/async.js",
+        "node_modules/node-inspector/node_modules/debug/debug.js",
+        "node_modules/node-inspector/node_modules/debug/lib/debug.js",
+        "node_modules/node-inspector/node_modules/express/benchmarks/middleware.js",
+        "node_modules/node-inspector/node_modules/express/index.js",
+        "node_modules/node-inspector/node_modules/express/lib/application.js",
+        "node_modules/node-inspector/node_modules/express/lib/express.js",
+        "node_modules/node-inspector/node_modules/express/lib/middleware/init.js",
+        "node_modules/node-inspector/node_modules/express/lib/middleware/query.js",
+        "node_modules/node-inspector/node_modules/express/lib/request.js",
+        "node_modules/node-inspector/node_modules/express/lib/response.js",
+        "node_modules/node-inspector/node_modules/express/lib/router/index.js",
+        "node_modules/node-inspector/node_modules/express/lib/router/layer.js",
+        "node_modules/node-inspector/node_modules/express/lib/router/route.js",
+        "node_modules/node-inspector/node_modules/express/lib/utils.js",
+        "node_modules/node-inspector/node_modules/express/lib/view.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/mime/mime.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/mime/test.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/examples/accept.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/examples/charset.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/examples/encoding.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/examples/language.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/charset.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/encoding.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/language.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/mediaType.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/lib/negotiator.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/buffer-crc32/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/cookie/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/cookie-signature/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/escape-html/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/fresh/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/merge-descriptors/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/methods/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/parseurl/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/path-to-regexp/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/path-to-regexp/test.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/qs/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/range-parser/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/lib/send.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/lib/utils.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/node_modules/mime/mime.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/node_modules/mime/test.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/lib/send.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/lib/utils.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/fresh/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/mime/mime.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/mime/test.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/range-parser/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/type-is/index.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/type-is/node_modules/mime/mime.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/type-is/node_modules/mime/test.js",
+        "node_modules/node-inspector/node_modules/express/node_modules/utils-merge/index.js",
+        "node_modules/node-inspector/node_modules/glob/examples/g.js",
+        "node_modules/node-inspector/node_modules/glob/examples/usr-local.js",
+        "node_modules/node-inspector/node_modules/glob/glob.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/inherits/inherits.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/inherits/inherits_browser.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/inherits/test.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/minimatch.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/lib/lru-cache.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/sigmund/bench.js",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/sigmund/sigmund.js",
+        "node_modules/node-inspector/node_modules/opener/opener.js",
+        "node_modules/node-inspector/node_modules/rc/browser.js",
+        "node_modules/node-inspector/node_modules/rc/index.js",
+        "node_modules/node-inspector/node_modules/rc/lib/utils.js",
+        "node_modules/node-inspector/node_modules/rc/node_modules/deep-extend/index.js",
+        "node_modules/node-inspector/node_modules/rc/node_modules/ini/ini.js",
+        "node_modules/node-inspector/node_modules/rc/node_modules/minimist/example/parse.js",
+        "node_modules/node-inspector/node_modules/rc/node_modules/minimist/index.js",
+        "node_modules/node-inspector/node_modules/strong-data-uri/index.js",
+        "node_modules/node-inspector/node_modules/strong-data-uri/node_modules/truncate/test.js",
+        "node_modules/node-inspector/node_modules/strong-data-uri/node_modules/truncate/truncate.js",
+        "node_modules/node-inspector/node_modules/which/which.js",
+        "node_modules/node-inspector/node_modules/yargs/example/bool.js",
+        "node_modules/node-inspector/node_modules/yargs/example/boolean_double.js",
+        "node_modules/node-inspector/node_modules/yargs/example/boolean_single.js",
+        "node_modules/node-inspector/node_modules/yargs/example/count.js",
+        "node_modules/node-inspector/node_modules/yargs/example/default_hash.js",
+        "node_modules/node-inspector/node_modules/yargs/example/default_singles.js",
+        "node_modules/node-inspector/node_modules/yargs/example/demand_count.js",
+        "node_modules/node-inspector/node_modules/yargs/example/divide.js",
+        "node_modules/node-inspector/node_modules/yargs/example/implies.js",
+        "node_modules/node-inspector/node_modules/yargs/example/implies_hash.js",
+        "node_modules/node-inspector/node_modules/yargs/example/line_count.js",
+        "node_modules/node-inspector/node_modules/yargs/example/line_count_options.js",
+        "node_modules/node-inspector/node_modules/yargs/example/line_count_wrap.js",
+        "node_modules/node-inspector/node_modules/yargs/example/nonopt.js",
+        "node_modules/node-inspector/node_modules/yargs/example/requires_arg.js",
+        "node_modules/node-inspector/node_modules/yargs/example/short.js",
+        "node_modules/node-inspector/node_modules/yargs/example/strict.js",
+        "node_modules/node-inspector/node_modules/yargs/example/string.js",
+        "node_modules/node-inspector/node_modules/yargs/example/usage-options.js",
+        "node_modules/node-inspector/node_modules/yargs/example/xup.js",
+        "node_modules/node-inspector/node_modules/yargs/index.js",
+        "node_modules/node-inspector/node_modules/yargs/lib/minimist.js",
+        "node_modules/node-inspector/node_modules/yargs/lib/wordwrap.js",
+        "node_modules/node-inspector/node_modules/yargs/node_modules/minimist/example/parse.js",
+        "node_modules/node-inspector/node_modules/yargs/node_modules/minimist/index.js",
+        "node_modules/q/q.js",
+        "node_modules/q/queue.js",
+        "node_modules/request/index.js",
+        "node_modules/request/lib/cookies.js",
+        "node_modules/request/lib/copy.js",
+        "node_modules/request/lib/debug.js",
+        "node_modules/request/lib/helpers.js",
+        "node_modules/request/node_modules/aws-sign2/index.js",
+        "node_modules/request/node_modules/bl/bl.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/duplex.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/lib/_stream_duplex.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/lib/_stream_passthrough.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/lib/_stream_readable.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/lib/_stream_transform.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/lib/_stream_writable.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is/lib/util.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is/util.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/inherits/inherits.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/inherits/inherits_browser.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/inherits/test.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/isarray/build/build.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/isarray/index.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/string_decoder/index.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/passthrough.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/readable.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/transform.js",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/writable.js",
+        "node_modules/request/node_modules/caseless/index.js",
+        "node_modules/request/node_modules/caseless/test.js",
+        "node_modules/request/node_modules/combined-stream/lib/combined_stream.js",
+        "node_modules/request/node_modules/combined-stream/node_modules/delayed-stream/lib/delayed_stream.js",
+        "node_modules/request/node_modules/forever-agent/index.js",
+        "node_modules/request/node_modules/form-data/lib/form_data.js",
+        "node_modules/request/node_modules/form-data/node_modules/async/lib/async.js",
+        "node_modules/request/node_modules/form-data/node_modules/mime-types/index.js",
+        "node_modules/request/node_modules/form-data/node_modules/mime-types/node_modules/mime-db/index.js",
+        "node_modules/request/node_modules/hawk/example/usage.js",
+        "node_modules/request/node_modules/hawk/index.js",
+        "node_modules/request/node_modules/hawk/lib/browser.js",
+        "node_modules/request/node_modules/hawk/lib/client.js",
+        "node_modules/request/node_modules/hawk/lib/crypto.js",
+        "node_modules/request/node_modules/hawk/lib/index.js",
+        "node_modules/request/node_modules/hawk/lib/server.js",
+        "node_modules/request/node_modules/hawk/lib/utils.js",
+        "node_modules/request/node_modules/hawk/node_modules/boom/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/boom/lib/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/cryptiles/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/cryptiles/lib/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/hoek/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/hoek/lib/escape.js",
+        "node_modules/request/node_modules/hawk/node_modules/hoek/lib/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/sntp/examples/offset.js",
+        "node_modules/request/node_modules/hawk/node_modules/sntp/examples/time.js",
+        "node_modules/request/node_modules/hawk/node_modules/sntp/index.js",
+        "node_modules/request/node_modules/hawk/node_modules/sntp/lib/index.js",
+        "node_modules/request/node_modules/http-signature/lib/index.js",
+        "node_modules/request/node_modules/http-signature/lib/parser.js",
+        "node_modules/request/node_modules/http-signature/lib/signer.js",
+        "node_modules/request/node_modules/http-signature/lib/util.js",
+        "node_modules/request/node_modules/http-signature/lib/verify.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/errors.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/index.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/reader.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/types.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/writer.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/lib/index.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/tst/ber/reader.test.js",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/tst/ber/writer.test.js",
+        "node_modules/request/node_modules/http-signature/node_modules/assert-plus/assert.js",
+        "node_modules/request/node_modules/http-signature/node_modules/ctype/ctf.js",
+        "node_modules/request/node_modules/http-signature/node_modules/ctype/ctio.js",
+        "node_modules/request/node_modules/http-signature/node_modules/ctype/ctype.js",
+        "node_modules/request/node_modules/json-stringify-safe/stringify.js",
+        "node_modules/request/node_modules/json-stringify-safe/test.js",
+        "node_modules/request/node_modules/mime-types/lib/index.js",
+        "node_modules/request/node_modules/node-uuid/benchmark/benchmark.js",
+        "node_modules/request/node_modules/node-uuid/uuid.js",
+        "node_modules/request/node_modules/oauth-sign/index.js",
+        "node_modules/request/node_modules/oauth-sign/test.js",
+        "node_modules/request/node_modules/qs/index.js",
+        "node_modules/request/node_modules/qs/lib/index.js",
+        "node_modules/request/node_modules/qs/lib/parse.js",
+        "node_modules/request/node_modules/qs/lib/stringify.js",
+        "node_modules/request/node_modules/qs/lib/utils.js",
+        "node_modules/request/node_modules/stringstream/example.js",
+        "node_modules/request/node_modules/stringstream/stringstream.js",
+        "node_modules/request/node_modules/tough-cookie/generate-pubsuffix.js",
+        "node_modules/request/node_modules/tough-cookie/lib/cookie.js",
+        "node_modules/request/node_modules/tough-cookie/lib/memstore.js",
+        "node_modules/request/node_modules/tough-cookie/lib/pubsuffix.js",
+        "node_modules/request/node_modules/tough-cookie/lib/store.js",
+        "node_modules/request/node_modules/tough-cookie/node_modules/punycode/punycode.js",
+        "node_modules/request/node_modules/tough-cookie/test.js",
+        "node_modules/request/node_modules/tunnel-agent/index.js",
+        "node_modules/request/request.js",
+        "node_modules/text-buffer/lib/buffer-patch.js",
+        "node_modules/text-buffer/lib/checkpoint.js",
+        "node_modules/text-buffer/lib/helpers.js",
+        "node_modules/text-buffer/lib/history.js",
+        "node_modules/text-buffer/lib/marker-manager.js",
+        "node_modules/text-buffer/lib/marker-patch.js",
+        "node_modules/text-buffer/lib/marker.js",
+        "node_modules/text-buffer/lib/point.js",
+        "node_modules/text-buffer/lib/range.js",
+        "node_modules/text-buffer/lib/text-buffer.js",
+        "node_modules/text-buffer/lib/transaction.js",
+        "node_modules/text-buffer/node_modules/atom-diff/diff.js",
+        "node_modules/text-buffer/node_modules/delegato/lib/delegator.js",
+        "node_modules/text-buffer/node_modules/delegato/node_modules/mixto/lib/mixin.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/behavior.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/emissary.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/emitter.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/helpers.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/signal.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/subscriber.js",
+        "node_modules/text-buffer/node_modules/emissary/lib/subscription.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/mixto/lib/mixin.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/text-buffer/node_modules/event-kit/lib/composite-disposable.js",
+        "node_modules/text-buffer/node_modules/event-kit/lib/disposable.js",
+        "node_modules/text-buffer/node_modules/event-kit/lib/emitter.js",
+        "node_modules/text-buffer/node_modules/event-kit/lib/event-kit.js",
+        "node_modules/text-buffer/node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/text-buffer/node_modules/grim/lib/deprecation.js",
+        "node_modules/text-buffer/node_modules/grim/lib/grim.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/index.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/browser.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/cake.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/coffee-script.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/command.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/grammar.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/helpers.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/index.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/lexer.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/nodes.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/optparse.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/parser.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/register.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/repl.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/rewriter.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/scope.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script/sourcemap.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/examples/pow.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/index.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/register.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/Makefile.dryice.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/assert-shim.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/mini-require.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/suffix-browser.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/test-prefix.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build/test-suffix.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/array-set.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/base64-vlq.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/base64.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/binary-search.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/mapping-list.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-map-consumer.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-map-generator.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/source-node.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map/util.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/amdefine.js",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/intercept.js",
+        "node_modules/text-buffer/node_modules/interval-skip-list/lib/interval-skip-list.js",
+        "node_modules/text-buffer/node_modules/interval-skip-list/node_modules/underscore/underscore-min.js",
+        "node_modules/text-buffer/node_modules/interval-skip-list/node_modules/underscore/underscore.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/lib/directory.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/lib/file.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/lib/main.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/async/lib/async.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib/composite-disposable.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib/disposable.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib/emitter.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib/event-kit.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/dbcs-codec.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/dbcs-data.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/index.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/internal.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/sbcs-codec.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/sbcs-data-generated.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/sbcs-data.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/utf16.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/utf7.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/lib/extend-node.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/lib/index.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/lib/streams.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/nan/include_dirs.js",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/lib/runas.js",
+        "node_modules/text-buffer/node_modules/q/benchmark/compare-with-callbacks.js",
+        "node_modules/text-buffer/node_modules/q/benchmark/scenarios.js",
+        "node_modules/text-buffer/node_modules/q/q.js",
+        "node_modules/text-buffer/node_modules/q/queue.js",
+        "node_modules/text-buffer/node_modules/serializable/lib/serializable.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/index.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/lib/index.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/lib/reporter.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/lib/testla.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/asserts.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/dependency-injector/index.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/fantasy-promises/index.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/fantasy-promises/test.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/fn.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/observer.js",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/mixto/lib/mixin.js",
+        "node_modules/text-buffer/node_modules/span-skip-list/lib/span-skip-list.js",
+        "node_modules/text-buffer/node_modules/span-skip-list/node_modules/underscore/underscore-min.js",
+        "node_modules/text-buffer/node_modules/span-skip-list/node_modules/underscore/underscore.js",
+        "node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/ws/index.js",
+        "node_modules/ws/lib/BufferPool.js",
+        "node_modules/ws/lib/BufferUtil.fallback.js",
+        "node_modules/ws/lib/BufferUtil.js",
+        "node_modules/ws/lib/ErrorCodes.js",
+        "node_modules/ws/lib/Receiver.hixie.js",
+        "node_modules/ws/lib/Receiver.js",
+        "node_modules/ws/lib/Sender.hixie.js",
+        "node_modules/ws/lib/Sender.js",
+        "node_modules/ws/lib/Validation.fallback.js",
+        "node_modules/ws/lib/Validation.js",
+        "node_modules/ws/lib/WebSocket.js",
+        "node_modules/ws/lib/WebSocketServer.js",
+        "node_modules/ws/lib/browser.js",
+        "node_modules/ws/node_modules/commander/index.js",
+        "node_modules/ws/node_modules/nan/include_dirs.js",
+        "node_modules/ws/node_modules/options/lib/options.js",
+        "node_modules/ws/node_modules/tinycolor/example.js",
+        "node_modules/ws/node_modules/tinycolor/tinycolor.js"
+      ],
+      ".coffee": [
+        "lib/api/debugger-api.coffee",
+        "lib/atom-node-debug.coffee",
+        "lib/editor-controls.coffee",
+        "lib/model/call-frame.coffee",
+        "lib/model/debugger-model.coffee",
+        "lib/model/remote-object.coffee",
+        "lib/remote-text-buffer.coffee",
+        "lib/view/call-frame-view.coffee",
+        "lib/view/choose-debugger-view.coffee",
+        "lib/view/command-button-view.coffee",
+        "lib/view/debugger-view.coffee",
+        "lib/view/remote-object-view.coffee"
+      ],
+      ".json": [
+        "node_modules/debug/bower.json",
+        "node_modules/debug/component.json",
+        "node_modules/debug/node_modules/ms/package.json",
+        "node_modules/debug/package.json",
+        "node_modules/mustache/bower.json",
+        "node_modules/mustache/package.json",
+        "node_modules/node-inspector/config.json",
+        "node_modules/node-inspector/node_modules/async/component.json",
+        "node_modules/node-inspector/node_modules/async/package.json",
+        "node_modules/node-inspector/node_modules/debug/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/mime/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/node_modules/negotiator/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/accepts/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/buffer-crc32/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/cookie/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/cookie-signature/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/escape-html/component.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/escape-html/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/fresh/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/merge-descriptors/component.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/merge-descriptors/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/methods/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/parseurl/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/path-to-regexp/component.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/path-to-regexp/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/qs/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/range-parser/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/node_modules/mime/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/send/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/fresh/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/mime/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/node_modules/range-parser/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/serve-static/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/type-is/node_modules/mime/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/type-is/package.json",
+        "node_modules/node-inspector/node_modules/express/node_modules/utils-merge/package.json",
+        "node_modules/node-inspector/node_modules/express/package.json",
+        "node_modules/node-inspector/node_modules/glob/node_modules/inherits/package.json",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/package.json",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/node_modules/sigmund/package.json",
+        "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/package.json",
+        "node_modules/node-inspector/node_modules/glob/package.json",
+        "node_modules/node-inspector/node_modules/opener/package.json",
+        "node_modules/node-inspector/node_modules/rc/node_modules/deep-extend/package.json",
+        "node_modules/node-inspector/node_modules/rc/node_modules/ini/package.json",
+        "node_modules/node-inspector/node_modules/rc/node_modules/minimist/package.json",
+        "node_modules/node-inspector/node_modules/rc/package.json",
+        "node_modules/node-inspector/node_modules/strong-data-uri/node_modules/truncate/package.json",
+        "node_modules/node-inspector/node_modules/strong-data-uri/package.json",
+        "node_modules/node-inspector/node_modules/which/package.json",
+        "node_modules/node-inspector/node_modules/yargs/node_modules/minimist/package.json",
+        "node_modules/node-inspector/node_modules/yargs/package.json",
+        "node_modules/node-inspector/package.json",
+        "node_modules/q/package.json",
+        "node_modules/request/node_modules/aws-sign2/package.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is/package.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/inherits/package.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/isarray/component.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/isarray/package.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/string_decoder/package.json",
+        "node_modules/request/node_modules/bl/node_modules/readable-stream/package.json",
+        "node_modules/request/node_modules/bl/package.json",
+        "node_modules/request/node_modules/caseless/package.json",
+        "node_modules/request/node_modules/combined-stream/node_modules/delayed-stream/package.json",
+        "node_modules/request/node_modules/combined-stream/package.json",
+        "node_modules/request/node_modules/forever-agent/package.json",
+        "node_modules/request/node_modules/form-data/node_modules/async/component.json",
+        "node_modules/request/node_modules/form-data/node_modules/async/package.json",
+        "node_modules/request/node_modules/form-data/node_modules/mime-types/node_modules/mime-db/db.json",
+        "node_modules/request/node_modules/form-data/node_modules/mime-types/node_modules/mime-db/package.json",
+        "node_modules/request/node_modules/form-data/node_modules/mime-types/package.json",
+        "node_modules/request/node_modules/form-data/package.json",
+        "node_modules/request/node_modules/hawk/node_modules/boom/package.json",
+        "node_modules/request/node_modules/hawk/node_modules/cryptiles/package.json",
+        "node_modules/request/node_modules/hawk/node_modules/hoek/package.json",
+        "node_modules/request/node_modules/hawk/node_modules/sntp/package.json",
+        "node_modules/request/node_modules/hawk/package.json",
+        "node_modules/request/node_modules/http-signature/node_modules/asn1/package.json",
+        "node_modules/request/node_modules/http-signature/node_modules/assert-plus/package.json",
+        "node_modules/request/node_modules/http-signature/node_modules/ctype/package.json",
+        "node_modules/request/node_modules/http-signature/package.json",
+        "node_modules/request/node_modules/json-stringify-safe/package.json",
+        "node_modules/request/node_modules/mime-types/component.json",
+        "node_modules/request/node_modules/mime-types/lib/custom.json",
+        "node_modules/request/node_modules/mime-types/lib/mime.json",
+        "node_modules/request/node_modules/mime-types/lib/node.json",
+        "node_modules/request/node_modules/mime-types/package.json",
+        "node_modules/request/node_modules/node-uuid/component.json",
+        "node_modules/request/node_modules/node-uuid/package.json",
+        "node_modules/request/node_modules/oauth-sign/package.json",
+        "node_modules/request/node_modules/qs/package.json",
+        "node_modules/request/node_modules/stringstream/package.json",
+        "node_modules/request/node_modules/tough-cookie/node_modules/punycode/package.json",
+        "node_modules/request/node_modules/tough-cookie/package.json",
+        "node_modules/request/node_modules/tunnel-agent/package.json",
+        "node_modules/request/package.json",
+        "node_modules/text-buffer/api.json",
+        "node_modules/text-buffer/node_modules/atom-diff/package.json",
+        "node_modules/text-buffer/node_modules/delegato/node_modules/mixto/package.json",
+        "node_modules/text-buffer/node_modules/delegato/package.json",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/harmony-collections/package.json",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/mixto/package.json",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/package.json",
+        "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/package.json",
+        "node_modules/text-buffer/node_modules/emissary/package.json",
+        "node_modules/text-buffer/node_modules/event-kit/api.json",
+        "node_modules/text-buffer/node_modules/event-kit/package.json",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/text-buffer/node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/text-buffer/node_modules/fs-plus/package.json",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/node_modules/mkdirp/package.json",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/package.json",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/node_modules/amdefine/package.json",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/package.json",
+        "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/package.json",
+        "node_modules/text-buffer/node_modules/grim/package.json",
+        "node_modules/text-buffer/node_modules/interval-skip-list/node_modules/underscore/package.json",
+        "node_modules/text-buffer/node_modules/interval-skip-list/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/api.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/async/component.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/async/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/api.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/big5-added.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/cp936.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/cp949.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/cp950.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/eucjp.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/gbk-added.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/encodings/tables/shiftjis.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/iconv-lite/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/nan/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/package.json",
+        "node_modules/text-buffer/node_modules/pathwatcher/package.json",
+        "node_modules/text-buffer/node_modules/q/package.json",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/dependency-injector/package.json",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/fantasy-promises/package.json",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/package.json",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/package.json",
+        "node_modules/text-buffer/node_modules/serializable/node_modules/mixto/package.json",
+        "node_modules/text-buffer/node_modules/serializable/package.json",
+        "node_modules/text-buffer/node_modules/span-skip-list/node_modules/underscore/package.json",
+        "node_modules/text-buffer/node_modules/span-skip-list/package.json",
+        "node_modules/text-buffer/package.json",
+        "node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/underscore-plus/package.json",
+        "node_modules/ws/node_modules/commander/package.json",
+        "node_modules/ws/node_modules/nan/package.json",
+        "node_modules/ws/node_modules/options/package.json",
+        "node_modules/ws/node_modules/tinycolor/package.json",
+        "node_modules/ws/package.json",
+        "package.json"
+      ],
+      ".node": [
+        "node_modules/text-buffer/node_modules/pathwatcher/build/Release/pathwatcher.node",
+        "node_modules/text-buffer/node_modules/pathwatcher/build/Release/pathwatcher.node.dSYM/Contents/Resources/DWARF/pathwatcher.node",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/build/Release/runas.node",
+        "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/build/Release/runas.node.dSYM/Contents/Resources/DWARF/runas.node",
+        "node_modules/ws/build/Release/bufferutil.node",
+        "node_modules/ws/build/Release/bufferutil.node.dSYM/Contents/Resources/DWARF/bufferutil.node",
+        "node_modules/ws/build/Release/validation.node",
+        "node_modules/ws/build/Release/validation.node.dSYM/Contents/Resources/DWARF/validation.node"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib/api",
+          "lib",
+          "lib/model",
+          "lib/view",
+          "",
+          "spec",
+          "spec/fixtures",
+          "tools"
+        ],
+        "dependencies": {
+          "debug": "^2.0.0",
+          "mustache": "^0.8.2",
+          "node-inspector": "^0.7.4",
+          "q": "^1.0.1",
+          "request": "^2.44.0",
+          "text-buffer": "^3.2.7",
+          "underscore-plus": "^1.5.1",
+          "ws": "^0.4.32"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/debug"
+        ],
+        "dependencies": {
+          "ms": "0.6.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/bin",
+          "node_modules/node-inspector",
+          "node_modules/node-inspector/front-end",
+          "node_modules/node-inspector/front-end/UglifyJS",
+          "node_modules/node-inspector/front-end/cm",
+          "node_modules/node-inspector/front-end-node",
+          "node_modules/node-inspector/lib"
+        ],
+        "dependencies": {
+          "express": "~4.0",
+          "async": "~0.8",
+          "glob": "~3.2.1",
+          "rc": "~0.3.0",
+          "strong-data-uri": "~0.1.0",
+          "debug": "~0.8",
+          "ws": "~0.4.31",
+          "opener": "~1.3.0",
+          "yargs": "~1.2.1",
+          "which": "~1.0.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/benchmarks",
+          "node_modules/node-inspector/node_modules/express",
+          "node_modules/node-inspector/node_modules/express/lib",
+          "node_modules/node-inspector/node_modules/express/lib/middleware",
+          "node_modules/node-inspector/node_modules/express/lib/router"
+        ],
+        "dependencies": {
+          "parseurl": "1.0.1",
+          "accepts": "1.0.0",
+          "type-is": "1.0.0",
+          "range-parser": "1.0.0",
+          "cookie": "0.1.0",
+          "buffer-crc32": "0.2.1",
+          "fresh": "0.2.2",
+          "methods": "0.1.0",
+          "send": "0.2.0",
+          "cookie-signature": "1.0.3",
+          "merge-descriptors": "0.0.2",
+          "utils-merge": "1.0.0",
+          "escape-html": "1.0.1",
+          "qs": "0.6.6",
+          "serve-static": "1.0.1",
+          "path-to-regexp": "0.1.2",
+          "debug": ">= 0.7.3 < 1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/node_modules/accepts",
+          "node_modules/node-inspector/node_modules/express/node_modules/accepts/test"
+        ],
+        "dependencies": {
+          "mime": "~1.2.11",
+          "negotiator": "~0.3.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/node_modules/send",
+          "node_modules/node-inspector/node_modules/express/node_modules/send/lib"
+        ],
+        "dependencies": {
+          "debug": "*",
+          "mime": "~1.2.9",
+          "fresh": "~0.2.1",
+          "range-parser": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/node_modules/serve-static"
+        ],
+        "dependencies": {
+          "send": "0.1.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send",
+          "node_modules/node-inspector/node_modules/express/node_modules/serve-static/node_modules/send/lib"
+        ],
+        "dependencies": {
+          "debug": "*",
+          "mime": "~1.2.9",
+          "fresh": "0.2.0",
+          "range-parser": "0.0.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/express/node_modules/type-is"
+        ],
+        "dependencies": {
+          "mime": "~1.2.11"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/glob/examples",
+          "node_modules/node-inspector/node_modules/glob",
+          "node_modules/node-inspector/node_modules/glob/test"
+        ],
+        "dependencies": {
+          "inherits": "2",
+          "minimatch": "0.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/glob/node_modules/minimatch",
+          "node_modules/node-inspector/node_modules/glob/node_modules/minimatch/test"
+        ],
+        "dependencies": {
+          "lru-cache": "2",
+          "sigmund": "~1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/rc",
+          "node_modules/node-inspector/node_modules/rc/lib",
+          "node_modules/node-inspector/node_modules/rc/test"
+        ],
+        "dependencies": {
+          "minimist": "~0.0.7",
+          "deep-extend": "~0.2.5",
+          "ini": "~1.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/strong-data-uri",
+          "node_modules/node-inspector/node_modules/strong-data-uri/test"
+        ],
+        "dependencies": {
+          "truncate": "~1.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-inspector/node_modules/yargs/example",
+          "node_modules/node-inspector/node_modules/yargs",
+          "node_modules/node-inspector/node_modules/yargs/lib",
+          "node_modules/node-inspector/node_modules/yargs/test/_",
+          "node_modules/node-inspector/node_modules/yargs/test"
+        ],
+        "dependencies": {
+          "minimist": "^0.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request",
+          "node_modules/request/lib"
+        ],
+        "dependencies": {
+          "bl": "~0.9.0",
+          "caseless": "~0.8.0",
+          "forever-agent": "~0.5.0",
+          "form-data": "~0.2.0",
+          "json-stringify-safe": "~5.0.0",
+          "mime-types": "~1.0.1",
+          "node-uuid": "~1.4.0",
+          "qs": "~2.3.1",
+          "tunnel-agent": "~0.4.0",
+          "tough-cookie": ">=0.12.0",
+          "http-signature": "~0.10.0",
+          "oauth-sign": "~0.5.0",
+          "hawk": "1.1.1",
+          "aws-sign2": "~0.5.0",
+          "stringstream": "~0.0.4",
+          "combined-stream": "~0.0.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/bl",
+          "node_modules/request/node_modules/bl/test"
+        ],
+        "dependencies": {
+          "readable-stream": "~1.0.26"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/bl/node_modules/readable-stream",
+          "node_modules/request/node_modules/bl/node_modules/readable-stream/lib"
+        ],
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "isarray": "0.0.1",
+          "string_decoder": "~0.10.x",
+          "inherits": "~2.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/combined-stream/lib",
+          "node_modules/request/node_modules/combined-stream"
+        ],
+        "dependencies": {
+          "delayed-stream": "0.0.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/form-data/lib",
+          "node_modules/request/node_modules/form-data"
+        ],
+        "dependencies": {
+          "async": "~0.9.0",
+          "combined-stream": "~0.0.4",
+          "mime-types": "~2.0.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/form-data/node_modules/mime-types"
+        ],
+        "dependencies": {
+          "mime-db": "~1.5.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/hawk/example",
+          "node_modules/request/node_modules/hawk",
+          "node_modules/request/node_modules/hawk/lib",
+          "node_modules/request/node_modules/hawk/test"
+        ],
+        "dependencies": {
+          "hoek": "0.9.x",
+          "boom": "0.4.x",
+          "cryptiles": "0.2.x",
+          "sntp": "0.2.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/hawk/node_modules/boom",
+          "node_modules/request/node_modules/hawk/node_modules/boom/lib",
+          "node_modules/request/node_modules/hawk/node_modules/boom/test"
+        ],
+        "dependencies": {
+          "hoek": "0.9.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/hawk/node_modules/cryptiles",
+          "node_modules/request/node_modules/hawk/node_modules/cryptiles/lib",
+          "node_modules/request/node_modules/hawk/node_modules/cryptiles/test"
+        ],
+        "dependencies": {
+          "boom": "0.4.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/hawk/node_modules/sntp/examples",
+          "node_modules/request/node_modules/hawk/node_modules/sntp",
+          "node_modules/request/node_modules/hawk/node_modules/sntp/lib",
+          "node_modules/request/node_modules/hawk/node_modules/sntp/test"
+        ],
+        "dependencies": {
+          "hoek": "0.9.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/http-signature/lib",
+          "node_modules/request/node_modules/http-signature"
+        ],
+        "dependencies": {
+          "assert-plus": "^0.1.5",
+          "asn1": "0.1.11",
+          "ctype": "0.5.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/request/node_modules/tough-cookie",
+          "node_modules/request/node_modules/tough-cookie/lib"
+        ],
+        "dependencies": {
+          "punycode": ">=0.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer",
+          "node_modules/text-buffer/lib"
+        ],
+        "dependencies": {
+          "delegato": "^1.0.0",
+          "atom-diff": "^2",
+          "emissary": "^1.0.0",
+          "event-kit": "^0.8.1",
+          "fs-plus": "^2.0.0",
+          "grim": "1.0.0",
+          "interval-skip-list": "^2.0.0",
+          "pathwatcher": "^2.6.0",
+          "q": "~1.0.1",
+          "serializable": "^1.0.0",
+          "span-skip-list": "~0.1.1",
+          "underscore-plus": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/delegato/lib",
+          "node_modules/text-buffer/node_modules/delegato"
+        ],
+        "dependencies": {
+          "mixto": "1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/emissary/lib",
+          "node_modules/text-buffer/node_modules/emissary"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mixto": "1.x",
+          "property-accessors": "^1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors/lib",
+          "node_modules/text-buffer/node_modules/emissary/node_modules/property-accessors"
+        ],
+        "dependencies": {
+          "mixto": "1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/event-kit",
+          "node_modules/text-buffer/node_modules/event-kit/lib"
+        ],
+        "dependencies": {
+          "grim": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/fs-plus/lib",
+          "node_modules/text-buffer/node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/grim/lib",
+          "node_modules/text-buffer/node_modules/grim"
+        ],
+        "dependencies": {
+          "coffeestack": "^0.7.0",
+          "emissary": "^1.2.0",
+          "underscore-plus": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack"
+        ],
+        "dependencies": {
+          "coffee-script": "~1.7.0",
+          "source-map": "~0.1.31"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script/lib/coffee-script",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/coffee-script"
+        ],
+        "dependencies": {
+          "mkdirp": "~0.3.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/build",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib/source-map",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/lib",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/test",
+          "node_modules/text-buffer/node_modules/grim/node_modules/coffeestack/node_modules/source-map/test/source-map"
+        ],
+        "dependencies": {
+          "amdefine": ">=0.0.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/interval-skip-list/lib",
+          "node_modules/text-buffer/node_modules/interval-skip-list"
+        ],
+        "dependencies": {
+          "underscore": "~1.5.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/pathwatcher",
+          "node_modules/text-buffer/node_modules/pathwatcher/build/Release",
+          "node_modules/text-buffer/node_modules/pathwatcher/build/Release/pathwatcher.node.dSYM/Contents/Resources/DWARF",
+          "node_modules/text-buffer/node_modules/pathwatcher/lib"
+        ],
+        "dependencies": {
+          "async": "~0.2.10",
+          "emissary": "^1.1.0",
+          "event-kit": "^1.0.0",
+          "fs-plus": "^2.1",
+          "grim": "^1.0.0",
+          "iconv-lite": "~0.4.4",
+          "nan": "1.2.0",
+          "q": "~1.0.1",
+          "runas": "^1.0.1",
+          "underscore-plus": "~1.x"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit",
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/event-kit/lib"
+        ],
+        "dependencies": {
+          "grim": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/build/Release",
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/build/Release/runas.node.dSYM/Contents/Resources/DWARF",
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas/lib",
+          "node_modules/text-buffer/node_modules/pathwatcher/node_modules/runas"
+        ],
+        "dependencies": {
+          "nan": "1.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/serializable/lib",
+          "node_modules/text-buffer/node_modules/serializable"
+        ],
+        "dependencies": {
+          "mixto": "1.x",
+          "underscore-plus": "1.x",
+          "get-parameter-names": "~0.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names",
+          "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/test"
+        ],
+        "dependencies": {
+          "testla": "*"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/lib",
+          "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla"
+        ],
+        "dependencies": {
+          "dependency-injector": "~0.0.5",
+          "fantasy-promises": "^0.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/serializable/node_modules/get-parameter-names/node_modules/testla/node_modules/dependency-injector"
+        ],
+        "dependencies": {
+          "get-parameter-names": "*"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/text-buffer/node_modules/span-skip-list/lib",
+          "node_modules/text-buffer/node_modules/span-skip-list"
+        ],
+        "dependencies": {
+          "underscore": "~1.5.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/underscore-plus/lib",
+          "node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/ws/build/Release",
+          "node_modules/ws/build/Release/bufferutil.node.dSYM/Contents/Resources/DWARF",
+          "node_modules/ws/build/Release/validation.node.dSYM/Contents/Resources/DWARF",
+          "node_modules/ws",
+          "node_modules/ws/lib"
+        ],
+        "dependencies": {
+          "commander": "~2.1.0",
+          "nan": "~1.0.0",
+          "tinycolor": "0.x",
+          "options": ">=0.0.5"
+        }
+      }
+    ]
+  }
+}

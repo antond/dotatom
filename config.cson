@@ -1,0 +1,16 @@
+"*":
+  "exception-reporting":
+    userId: "4a8541ff-cf66-f20c-445f-847caa0ce77c"
+  welcome:
+    showOnStartup: false
+  core:
+    {}
+  editor:
+    fontSize: 14
+    showInvisibles: true
+    showIndentGuide: true
+    tabLength: 4
+    invisibles:
+      {}
+  jshint:
+    {}

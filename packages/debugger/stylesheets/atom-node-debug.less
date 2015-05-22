@@ -1,0 +1,157 @@
+@import "ui-variables";
+
+@line-color-breakpoint:   darken(@background-color-warning, 50%);
+@border-color-breakpoint: darken(@background-color-warning, 33%);
+@gutter-color-breakpoint: darken(@background-color-warning, 33%);
+
+@line-color-current-pointer:   darken(@background-color-info, 35%);
+@border-color-current-pointer: darken(@background-color-info, 20%);
+@gutter-color-current-pointer: darken(@background-color-info, 20%);
+@gutter-color-current-pointer-stack: darken(@background-color-info, 30%);
+
+
+.clearfix{
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+// Set on any element currently being used/highlighted/etc. by this package.
+// Other more specific styles will also be prefixed by 'debugger'
+.debugger {
+  
+}
+
+.debugger-ui {
+  height: 100%;
+  
+  & > .panel-heading {
+    height: 3em;
+    .clearfix();
+    
+    //weird off-center button spacing.
+    .btn { margin-bottom: -7px; }
+    .debugger-detach,
+    .debugger-status {
+      float: left;
+    }
+    .debugger-control-flow {
+      float: right;
+    }
+    .debugger-status {
+      padding: 0 1em;
+    }
+  }
+  
+  & > .panel-body {
+    padding: 0;
+    height: calc(100% - 3em);
+  }
+
+}
+
+.debugger--show-breakpoints {
+  // decoration for a breakpoint.
+  .debugger-breakpoint
+  {
+    background-color: @line-color-breakpoint;
+    &.line-number {
+      background-color: @gutter-color-breakpoint;
+    }
+    border-color: @border-color-breakpoint;
+    border-style: solid;
+    border-width: 1px 0;
+  }
+}
+
+//Set on workspace when exection is paused.
+//TODO: this is being overused--both for paused and for
+// when there's an active debugging session (i.e. even between pauses).
+.debugger--paused {
+  
+  .debugger-console {
+    width: 50%;
+    float: left;
+    overflow: scroll;
+  }
+  
+  .debugger-remote-object {
+    .clearfix();
+    
+    .name:after { content: ":" }
+    .description { margin-left: .5em; }
+
+    & > .name,
+    & > .description { cursor: pointer; }
+    & > .name:before { content: '\0025B8'; }
+    &.open > .name:before { content: '\0025BE'; }
+    & > .description:after { content: ' {...}' }
+    &.open > .description:after { content: ' {' }
+    &.open:after { content: '}' }
+    
+    .properties {
+      margin-left: 1em;
+    }
+  }
+
+  
+  .debugger-call-frames {
+    height: 100%;
+    overflow: scroll;
+    width: 50%;
+    float: right;
+
+    .debugger-call-frame {
+      .line:before {content: ':'}
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+    }
+  }
+  
+  
+  
+  //
+  // MARKERS
+  //
+  
+  // decoration for the lines of code anywhere in the call stack
+  // in the currently paused execution state.
+  .debugger-current-pointer {
+    border-color: @border-color-current-pointer;
+    &.line-number {
+      background-color: @gutter-color-current-pointer-stack
+    }
+    border-style: solid;
+    border-width: 1px 0;
+  }
+  
+  // decoration for the line at the *top* of the call stack in the
+  // currently paused exection state.
+  .debugger-current-pointer--top {
+    background-color: @line-color-current-pointer;
+    &.line-number {
+      background-color: @gutter-color-current-pointer;
+    }
+    border-color: @border-color-current-pointer;
+    border-style: solid;
+    border-width: 1px 0;
+  }
+  
+
+}
+  
+// in the gutter, we want breakpoint style to win over current exec. pointer
+// so that we can still see that the line is a breakpoint.
+.debugger--show-breakpoints.debugger--paused {
+  .debugger-breakpoint.line-number {
+    background-color: @gutter-color-breakpoint;
+  }
+  .debugger-breakpoint.debugger-current-pointer {
+    border-color: @border-color-breakpoint;
+  }
+}
